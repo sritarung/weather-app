@@ -12,3 +12,5 @@ parserOptions:
 plugins:
   - react
 rules: {}
+ignorePatterns:
+  - "dist/*"
