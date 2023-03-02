@@ -110,8 +110,14 @@ we can't call it directly from our code (you can try this, if you want). Instead
 1. Add a search box and a submit button. The search box should have id `address` and the button should have id `address-submit`.
    Unfortunately, the Census Geocoding API requires a full address,
    not just a city/state or ZIP code. (Let me know if you find another geocdoing API that doesn't require a key.)
-2. Attach a listener to the `click` event that takes the contents of the address box and just logs it to the console.
+2. Attach a listener to the `click` event that takes the contents of the address box and just logs it to the console. (We did this in class.)
 
 3. Take a look at https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/charCode#notes and add a listener to the text input itself to submit on `Enter`. (See also https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
 
 4. Run the tests with `pnpm test`. The "address submission" tests should pass.
+
+## Step Four: Look up the weather
+
+...
+
+## Step Five: Replace your hard-coded forecast

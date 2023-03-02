@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 import "expect-puppeteer";
 
 describe("Address submission", () => {

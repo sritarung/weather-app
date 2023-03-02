@@ -25,7 +25,7 @@ export function buildCensusURL(address) {
  * @param address {string}
  * @returns a Promise<Response> from querying the geocoding API
  */
-export function getGeoDataForAdress(address) {
+export function getGeoDataForAddress(address) {
   return fetch(proxyURL(buildCensusURL(address)));
 }
 
@@ -42,12 +42,17 @@ export async function extractResultFromResponse(response) {
   return data.result.addressMatches[0];
 }
 
-export function getLatLongForAddress(address) {
-  getGeoDataForAdress(address).then((resp) =>
-    extractResultFromResponse(resp).then((addressMatch) => ({
-      address: addressMatch.matchedAddress,
-      lat: addressMatch.coordinates.x,
-      long: addressMatch.coordinates.y,
-    }))
-  );
+/**
+ *
+ * @param {string} address
+ * @returns {{address: string, lat: number, long: number}}
+ */
+export async function getLatLongForAddress(address) {
+  const resp = await getGeoDataForAddress(address);
+  const addressMatch = await extractResultFromResponse(resp);
+  return {
+    address: addressMatch.matchedAddress,
+    lat: addressMatch.coordinates.x,
+    long: addressMatch.coordinates.y,
+  };
 }
