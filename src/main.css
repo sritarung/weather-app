@@ -29,6 +29,10 @@ html {
   margin-bottom: 1em;
 }
 
+.address-lookup {
+  padding: 5px;
+}
+
 .forecast-container {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
