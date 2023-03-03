@@ -103,7 +103,7 @@ the Census has a [Geocoding API](https://geocoding.geo.census.gov/geocoder/Geoco
 ### Detour: CORS
 
 Take a minute and read about [CORS Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). Because the Census Geocoding API doesn't actually supply CORS headers,
-we can't call it directly from our code (you can try this, if you want). Instead, we'll proxy the requests via [corsproxy.io](https://corsproxy.io/). Is proxying via a website run by a random German company a good practice? No. In the "real world", you'd proxy via a server you control.
+we can't call it directly from our client-side/frontend code (you can try this, if you want). Instead, we'll proxy the requests via [corsproxy.io](https://corsproxy.io/). Is proxying via a website run by a random German company a good practice? No. In the "real world", you'd proxy via a server you control.
 
 ## Step Three: Add an address box
 
