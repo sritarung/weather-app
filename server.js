@@ -3,12 +3,12 @@ const express = require("express");
 const devMiddleware = require("webpack-dev-middleware");
 const hotReloadMiddleware = require("webpack-hot-middleware");
 const morgan = require("morgan");
-const webpackConfig = require("./webpack.config");
 const {
   createProxyMiddleware,
   responseInterceptor,
 } = require("http-proxy-middleware");
 const open = require("open");
+const webpackConfig = require("./webpack.config");
 
 const compiler = webpack(webpackConfig);
 

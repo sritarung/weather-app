@@ -13,7 +13,18 @@ function onAddressSubmit(ev) {
   // here, we should start by calling the geocode API
 }
 
+function fetchSampleData() {
+  fetch("http://localhost:3000/sample_forecast.json")
+    .then((x) => x.json())
+    .then(console.log);
+}
+
 (() => {
+  // attach a handler to the "sample data" button
+  document
+    .getElementById("sample-data")
+    .addEventListener("click", fetchSampleData);
+
   // attach the address submit handler to the submit button
   const submitButton = document.getElementById("address-submit");
   submitButton.addEventListener("click", onAddressSubmit);
