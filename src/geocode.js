@@ -1,6 +1,4 @@
-const ONE_LINE_ENDPOINT =
-  "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress";
-const proxyURL = (url) => `https://corsproxy.io/?${encodeURIComponent(url)}`;
+const ADDRESS_ENDPOINT = "http://localhost:3000/address";
 
 /**
  * Assemble the URL for a particular address
@@ -9,7 +7,7 @@ const proxyURL = (url) => `https://corsproxy.io/?${encodeURIComponent(url)}`;
  * @returns a string of the assembled URL
  */
 export function buildCensusURL(address) {
-  const url = new URL(ONE_LINE_ENDPOINT);
+  const url = new URL(ADDRESS_ENDPOINT);
   if (url.searchParams === undefined) {
     url.searchParams = new URLSearchParams();
   }
@@ -27,7 +25,7 @@ export function buildCensusURL(address) {
  * @returns a Promise<Response> from querying the geocoding API
  */
 export function getGeoDataForAddress(address) {
-  return fetch(proxyURL(buildCensusURL(address)));
+  return fetch(buildCensusURL(address));
 }
 
 /**
@@ -62,7 +60,7 @@ export async function getLatLongForAddress(address) {
   const addressMatch = await extractResultFromResponse(resp);
   return {
     address: addressMatch.matchedAddress,
-    lat: addressMatch.coordinates.x,
-    long: addressMatch.coordinates.y,
-  }; */
+    long: addressMatch.coordinates.x,
+    lat: addressMatch.coordinates.y,
+  };
 }
