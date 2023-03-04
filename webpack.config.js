@@ -1,8 +1,12 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: [
+    "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true",
+    "./src/index.js",
+  ],
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
@@ -28,7 +32,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "src/index.html" })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: "src/index.html" }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   devServer: {
     static: "./dist",
   },
