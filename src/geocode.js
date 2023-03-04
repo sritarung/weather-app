@@ -54,13 +54,4 @@ export async function getLatLongForAddress(address) {
       lat: addressMatch.x,
       long: addressMatch.y,
     }));
-
-  /*
-  const resp = await getGeoDataForAddress(address);
-  const addressMatch = await extractResultFromResponse(resp);
-  return {
-    address: addressMatch.matchedAddress,
-    long: addressMatch.coordinates.x,
-    lat: addressMatch.coordinates.y,
-  };
 }
