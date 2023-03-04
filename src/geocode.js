@@ -13,10 +13,11 @@ export function buildCensusURL(address) {
   if (url.searchParams === undefined) {
     url.searchParams = new URLSearchParams();
   }
+  // append key-value pairs for the query params
   url.searchParams.append("address", address);
   url.searchParams.append("benchmark", "2020");
   url.searchParams.append("format", "json");
-  return url.toString();
+  return url.toString(); // get URL-encoded for free
 }
 
 /**
@@ -48,11 +49,20 @@ export async function extractResultFromResponse(response) {
  * @returns {{address: string, lat: number, long: number}}
  */
 export async function getLatLongForAddress(address) {
+  return getGeoDataForAddress(address)
+    .then((response) => extractResultFromResponse(response))
+    .then((addressMatch) => ({
+      address: addressMatch.matchedAddress,
+      lat: addressMatch.x,
+      long: addressMatch.y,
+    }));
+
+  /*
   const resp = await getGeoDataForAddress(address);
   const addressMatch = await extractResultFromResponse(resp);
   return {
     address: addressMatch.matchedAddress,
     lat: addressMatch.coordinates.x,
     long: addressMatch.coordinates.y,
-  };
+  }; */
 }

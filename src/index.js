@@ -10,6 +10,7 @@ function onAddressSubmit(ev) {
   // find the text box
   const addressElt = document.getElementById("address");
   console.log(addressElt.value);
+  // here, we should start by calling the geocode API
 }
 
 (() => {
