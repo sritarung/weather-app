@@ -4,7 +4,7 @@ import { buildCensusURL, extractResultFromResponse } from "../geocode";
 describe("address URL", () => {
   test("build endpoint url from example", () => {
     expect(buildCensusURL("4600 Silver Hill Rd, Washington, DC 20233")).toBe(
-      "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4600+Silver+Hill+Rd%2C+Washington%2C+DC+20233&benchmark=2020&format=json"
+      "http://localhost:3000/address?address=4600+Silver+Hill+Rd%2C+Washington%2C+DC+20233&benchmark=2020&format=json"
     );
   });
 
