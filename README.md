@@ -103,21 +103,44 @@ the Census has a [Geocoding API](https://geocoding.geo.census.gov/geocoder/Geoco
 ### Detour: CORS
 
 Take a minute and read about [CORS Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). Because the Census Geocoding API doesn't actually supply CORS headers,
-we can't call it directly from our client-side/frontend code (you can try this, if you want). Instead, we'll proxy the requests via [corsproxy.io](https://corsproxy.io/). Is proxying via a website run by a random German company a good practice? No. In the "real world", you'd proxy via a server you control.
+we can't call it directly from our client-side/frontend code (you can try this, if you want). ~~Instead, we'll proxy the requests via [corsproxy.io](https://corsproxy.io/).~~ Is proxying via a website run by a random German company a good practice? No. In the "real world", you'd proxy via a server you control. (**Update**: the assignment now has its own dev server which proxies the requests.)
 
-## Step Three: Add an address box
+## Step Three: Replace your hard-coded forecast
+
+**NOTE**: It doesn't actually matter if you do this before or after Steps 4/5. However, it's probably marginally easier to do this first using the sample data.
+
+There is a button that says `Sample Data` which will return a hard-coded forecast response (it's in `src/sample_forecast.json`). You'll notice that `fetchSampleData` is attached to the `click` event of this button.
+
+```js
+function fetchSampleData() {
+  return Promise.resolve(sampleForecast).then((x) =>
+    insertForecast(x.properties.periods)
+  );
+}
+```
+
+You'll need to implement the `insertForecast` function in `index.js` to insert the forecast into the DOM. I left you stubs of functions called `buildForecastIconElt` and `buildForecastBlock` that I used,
+but you're not required to use them. Note that the API response includes an `icon` field with a URL to retrieve an image to accompany the forecast. This will replace the Bootstrap icons we used before. (You'll have to do something [like we did with the cat in class](https://github.com/csc473-spring23/js-exercise/blob/main/src/index.js#L19).) These forecasts also include only a single temperature rather than a high/low. That's fine, just include one temperature.
+
+**Make sure you include alt text with the icon image!** (The `shortForecast` field is probably a good choice, though it's not perfect, since the icons sometimes include percentages of precipitation. On the other hand, using `detailedForecast` repeats information.)
+
+You'll end up with something that looks like the screenshot in `screenshots/forecast.png`.
+
+## Step Four: Add an address box
 
 1. Add a search box and a submit button. The search box should have id `address` and the button should have id `address-submit`.
    Unfortunately, the Census Geocoding API requires a full address,
    not just a city/state or ZIP code. (Let me know if you find another geocdoing API that doesn't require a key.)
 2. Attach a listener to the `click` event that takes the contents of the address box and just logs it to the console. (We did this in class.)
 
-3. Take a look at https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/charCode#notes and add a listener to the text input itself to submit on `Enter`. (See also https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
+3. Take a look at https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event and add a listener to the text input itself to submit on `Enter`. (See also https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
 
 4. Run the tests with `pnpm test`. The "address submission" tests should pass.
 
-## Step Four: Look up the weather
+## Step Five: Look up the weather
 
-...
+Now that we have the address information, implement `getForecast` in `forecast.js` to retrieve the weather forecast for the address the user supplied.
 
-## Step Five: Replace your hard-coded forecast
+## Step Six: Error Handling
+
+What should your application do when either the forecast or address can't be found?

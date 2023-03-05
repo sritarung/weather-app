@@ -9,6 +9,7 @@ import sampleForecast from "./sample_forecast.json";
 async function buildForecastIconElt(forecast) {}
 
 /**
+ * Create the `section` element for one forecast item.
  *
  * @param {{name: string, startTime: string, endTime: string, temperature: number, icon: URL, shortForecast: string}} forecast
  */
