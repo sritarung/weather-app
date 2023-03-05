@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const webpack = require("webpack");
 const express = require("express");
 const devMiddleware = require("webpack-dev-middleware");
@@ -54,12 +55,15 @@ app.use(
     followRedirects: true,
     selfHandleResponse: true,
     onProxyRes: responseInterceptor(
-      async (responseBuffer, _proxyRes, _req, _res) => {
-        const response = responseBuffer.toString("utf-8");
-        return response.replaceAll(
-          "https://api.weather.gov/",
-          "http://localhost:3000/weather/"
-        );
+      async (responseBuffer, proxyRes, _req, _res) => {
+        if (proxyRes.headers["content-type"] === "application/json") {
+          const response = responseBuffer.toString("utf-8");
+          return response.replaceAll(
+            "https://api.weather.gov/",
+            "http://localhost:3000/weather/"
+          );
+        }
+        return responseBuffer;
       }
     ),
   })
@@ -68,6 +72,6 @@ app.use(
 app.use(express.static(__dirname));
 
 app.listen(3000, () => {
-  console.log("Express listening on port 3000");
+  console.info("Express listening on port 3000");
   open("http://localhost:3000");
 });

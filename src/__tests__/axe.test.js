@@ -11,7 +11,9 @@ describe("axe accessibility check", () => {
   });
 
   it("should pass default axe checks", async () => {
+    // load the sample data
     const results = await new AxePuppeteer(page).analyze();
-    expect(results).toHaveNoViolations();
+    console.log(results.violations);
+    expect(results.violations.length).toBe(0);
   });
 });

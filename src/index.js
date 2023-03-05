@@ -1,4 +1,25 @@
 import "./main.css";
+import sampleForecast from "./sample_forecast.json";
+
+/**
+ * Create an img element with the "icon" specified in the forecast
+ *
+ * @param {{name: string, startTime: string, endTime: string, temperature: number, icon: URL, shortForecast: string}} forecast
+ */
+async function buildForecastIconElt(forecast) {}
+
+/**
+ *
+ * @param {{name: string, startTime: string, endTime: string, temperature: number, icon: URL, shortForecast: string}} forecast
+ */
+async function buildForecastBlock(forecast) {}
+
+/**
+ * Now that we have the array of forecasts, insert them into the
+ * DOM
+ * @param {} forecastPeriods
+ */
+function insertForecast(forecastPeriods) {}
 
 /**
  * Event handler for address submission
@@ -9,14 +30,13 @@ function onAddressSubmit(ev) {
   ev.preventDefault();
   // find the text box
   const addressElt = document.getElementById("address");
-  console.log(addressElt.value);
   // here, we should start by calling the geocode API
 }
 
 function fetchSampleData() {
-  fetch("http://localhost:3000/sample_forecast.json")
-    .then((x) => x.json())
-    .then(console.log);
+  return Promise.resolve(sampleForecast).then((x) =>
+    insertForecast(x.properties.periods)
+  );
 }
 
 (() => {
@@ -24,6 +44,7 @@ function fetchSampleData() {
   document
     .getElementById("sample-data")
     .addEventListener("click", fetchSampleData);
+  fetchSampleData();
 
   // attach the address submit handler to the submit button
   const submitButton = document.getElementById("address-submit");

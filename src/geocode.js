@@ -44,14 +44,14 @@ export async function extractResultFromResponse(response) {
 /**
  *
  * @param {string} address
- * @returns {{address: string, lat: number, long: number}}
+ * @returns {Promise<{address: string, lat: number, long: number}>}
  */
-export async function getLatLongForAddress(address) {
+export function getLatLongForAddress(address) {
   return getGeoDataForAddress(address)
     .then((response) => extractResultFromResponse(response))
     .then((addressMatch) => ({
       address: addressMatch.matchedAddress,
-      lat: addressMatch.x,
-      long: addressMatch.y,
+      long: addressMatch.coordinates.x,
+      lat: addressMatch.coordinates.y,
     }));
 }

@@ -9,7 +9,7 @@ const FORECAST_ENDPOINT = (office, x, y) =>
  * @param {number} longitude
  */
 async function getPoint(latitude, longitude) {
-  const url = `${POINT_LOOKUP}/${latitude},${longitude}`;
+  const url = `${POINT_ENDPOINT}/${latitude},${longitude}`;
   return fetch(url);
 }
 
@@ -19,6 +19,4 @@ async function getPoint(latitude, longitude) {
  * @param {number} latitude
  * @param {number} longitude
  */
-export default function getForecast(latitude, longitude) {
-  // TODO
-}
+export default function getForecast(latitude, longitude) {}
