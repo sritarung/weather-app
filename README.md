@@ -6,7 +6,7 @@ to query an API.
 ## Getting Set Up
 
 This repo contains my `main.css` and `index.html` from the Assignment 2. You can
-use those or continue to work on your Assignment 2 code.
+use those or continue to work on your Assignment 2 code (copy it into an assignment 3 repo.)
 
 ## Step One
 
@@ -144,3 +144,15 @@ Now that we have the address information, implement `getForecast` in `forecast.j
 ## Step Six: Error Handling
 
 What should your application do when either the forecast or address can't be found?
+
+## Checklist
+
+- [ ] format your code with `pnpm format`
+- [ ] lint your code with `pnpm lint`
+- [ ] check that the tests pass
+- [ ] check for errors/warnings with WAVE
+
+## Notes
+
+- The are precommit hooks set up with `husky`. If you need to bypass them (eg to save work in progess), run commit with `git commit --no-verify`.
+- If you're submitting via Blackboard, run `pnpm pack` to create a tar ball (why didn't I think of this last time?) and change the name of the file to `<your name>-assignment3.tar`.

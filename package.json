@@ -10,7 +10,7 @@
     "start": "node server.js",
     "test": "jest",
     "format": "prettier --write src/",
-    "preare": "husky install"
+    "postinstall": "husky install"
   },
   "keywords": [],
   "author": "",
