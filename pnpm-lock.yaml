@@ -31,6 +31,7 @@ importers:
       morgan: ^1.10.0
       node: ^19.6.1
       open: ^8.4.2
+      prettier: ^2.8.7
       puppeteer: ^19.7.2
       style-loader: ^3.3.1
       ts-node: ^10.9.1
@@ -45,6 +46,7 @@ importers:
       http-proxy-middleware: 2.0.6
       morgan: 1.10.0
       open: 8.4.2
+      prettier: 2.8.7
       webpack: 5.75.0_webpack-cli@5.0.1
       webpack-dev-middleware: 6.0.1_webpack@5.75.0
       webpack-dev-server: 4.11.1_rjsyjcrmk25kqsjzwkvj3a2evq
@@ -6158,6 +6160,12 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
     dev: true
+
+  /prettier/2.8.7:
+    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: false
 
   /pretty-error/4.0.0:
     resolution: {integrity: sha512-AoJ5YMAcXKYxKhuJGdcvse+Voc6v1RgnsR3nWcYU7q4t6z0Q6T86sv5Zq8VIRbOWWFpvdGE83LtdSMNd+6Y0xw==}

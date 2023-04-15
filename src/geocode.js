@@ -46,7 +46,7 @@ export async function extractResultFromResponse(response) {
  * @param {string} address
  * @returns {Promise<{address: string, lat: number, long: number}>}
  */
-export function getLatLongForAddress(address) {
+export default function getLatLongForAddress(address) {
   return getGeoDataForAddress(address)
     .then((response) => extractResultFromResponse(response))
     .then((addressMatch) => ({
